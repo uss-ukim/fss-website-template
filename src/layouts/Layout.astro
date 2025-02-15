@@ -2,6 +2,7 @@
 import Header from "../components/layout/Header.astro";
 
 import "../styles/global.css";
+import Footer from "../components/layout/Footer.astro";
 ---
 
 <!doctype html>
@@ -20,9 +21,7 @@ import "../styles/global.css";
       <slot />
     </main>
 
-    <footer class="bg-white w-full container text-center">
-      <p>&copy; 2021 FSS</p>
-    </footer>
+    <Footer />
   </body>
 </html>
 
