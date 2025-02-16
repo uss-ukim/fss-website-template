@@ -3,13 +3,26 @@ import EmailIcon from "../icons/EmailIcon.astro";
 import LinkedInIcon from "../icons/LinkedInIcon.astro";
 import InstagramIcon from "../icons/InstagramIcon.astro";
 ---
-<footer class="bg-white w-full container text-center">
 
-    <div class="flex justify-center space-between gap-1.5">
+<footer class="gap-1.5 bg-white w-full container p-2 text-center">
+  <a
+    href="#"
+    class="h-12 aspect-square bg-blue-500/90 rounded-full inline-flex items-center justify-center text-white"
+  >
     <EmailIcon />
+  </a>
+
+  <a
+    href="#"
+    class="h-12 aspect-square bg-blue-500/90 rounded-full inline-flex items-center justify-center text-white"
+  >
     <LinkedInIcon />
-    <InstagramIcon/>
-    </div>
-    <br/>
-    <p>&copy; 2021 FSS</p>
+  </a>
+
+  <a
+    href="#"
+    class="h-12 aspect-square bg-blue-500/90 rounded-full inline-flex items-center justify-center text-white"
+  >
+    <InstagramIcon />
+  </a>
 </footer>
