@@ -1,0 +1,29 @@
+name: Check formatting
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Node modules caching
+        id: cache-node-modules
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check formatting
+        run: npm run format:check
