@@ -1,27 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  organization: CollectionEntry<"organizations">;
+}
+
+const { organization } = Astro.props;
+---
+
 <header class="container flex w-full items-center justify-between bg-white px-8 py-4 shadow">
   <div class="flex items-center gap-2">
     <a href="/">
-      <img src="/public/images/logo.png" alt="FSS Logo" class="aspect-square h-16" />
+      <img src={organization.data.logo} alt="FSS Logo" class="aspect-square h-16" />
     </a>
 
     <p class="lg:text-md w-64 text-sm">
-      Факултетско Студентско Собрание при Факултет за Информатички Науки и Компјутерско Инженерство
+      {organization.data.long_name}
     </p>
   </div>
 
   <nav>
     <ul class="flex gap-4 lg:gap-16">
       <li>
-        <a href="/" class="uppercase">Почетна</a>
+        <a href={`/${organization.id}`} class="uppercase">Почетна</a>
       </li>
       <li>
-        <a href="/tim" class="uppercase">Тимот</a>
+        <a href={`/${organization.id}/tim`} class="uppercase">Тимот</a>
       </li>
       <li>
-        <a href="/pravobranitel" class="uppercase">Правобранител</a>
+        <a href={`/${organization.id}/pravobranitel`} class="uppercase">Правобранител</a>
       </li>
       <li>
-        <a href="/kontakt" class="uppercase">Контакт</a>
+        <a href={`/${organization.id}/kontakt`} class="uppercase">Контакт</a>
       </li>
     </ul>
   </nav>
