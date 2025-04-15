@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Disable default colors */
+  --color-*: initial;
+
+  --color-primary: oklch(0.623 0.214 259.815);
+  --color-background: white;
+  --color-background-muted: lightgray;
+  --color-text: black;
+  --color-text-muted: gray;
+}
+
+@layer base {
+  .dark {
+    --color-primary: oklch(0.623 0.214 259.815);
+    --color-background: black;
+    --color-background-muted: gray;
+    --color-text: white;
+    --color-text-muted: lightgray;
+  }
+}
