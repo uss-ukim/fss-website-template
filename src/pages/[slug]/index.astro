@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { render } from "astro:content";
+import AboutFSS from "~/components/AboutFSS.astro";
+import MissionFSS from "~/components/MissionFSS.astro";
 
 export async function getStaticPaths() {
   const organizations = await getCollection("organizations");
@@ -19,5 +21,9 @@ const { Content } = await render(organization);
   <h1>{organization.data.name} - Почетна</h1>
 
   <p>{organization.data.description}</p>
+
+  <AboutFSS />
+  <MissionFSS />
+
   <Content />
 </Layout>
