@@ -16,4 +16,7 @@ export default defineConfig({
   schema: {
     collections: [OrganizationCollection],
   },
+  search: {
+    tina: {}, // Won't use cloud
+  },
 });
