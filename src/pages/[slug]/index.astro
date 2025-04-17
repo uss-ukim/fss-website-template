@@ -2,8 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { render } from "astro:content";
-import AboutFSS from "~/components/AboutFSS.astro";
-import MissionFSS from "~/components/MissionFSS.astro";
+import AboutFSS from "~/components/homepage/AboutFSS.astro";
+import MissionFSS from "~/components/homepage/MissionFSS.astro";
+import AboutFaculty from "~/components/homepage/AboutFaculty.astro";
 
 export async function getStaticPaths() {
   const organizations = await getCollection("organizations");
@@ -24,6 +25,7 @@ const { Content } = await render(organization);
 
   <AboutFSS />
   <MissionFSS />
+  <AboutFaculty />
 
   <Content />
 </Layout>

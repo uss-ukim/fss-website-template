@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InstagramIcon from "../components/icons/InstagramIcon.astro";
+import EmailIcon from "../components/icons/EmailIcon.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+---
+
+<Layout>
+  <div class="items-left grid w-full grid-cols-1 justify-evenly lg:grid-cols-2">
+    <img
+      src="/images/logo_fakultet.png"
+      class="object-fit-cover h-full w-full bg-[rgb(223,231,251)] p-12"
+    />
+
+    <div class="flex h-full flex-col justify-center gap-8 bg-[rgb(223,231,251)] p-10">
+      <h1 class="text-3xl font-semibold text-[rgb(17,1,78)] sm:text-4xl">ПРАВОБРАНИТЕЛ</h1>
+
+      <p class="text-[rgb(17,1,78)] sm:text-xl">
+        Факултетското студентско собрание на ФИНКИ е официјалното студентско тело кое ги застапува
+        студентите на ФИНКИ. Ние сме единица на факултетот оформена со закон за високо образование
+        во кое имаат право да членуваат студенти од прв и втор циклус на студии, а членовите се
+        избрани на јавни, непосредни и тајни избори кои се организираат секоја година. Во
+        факултетското студентско собрание членуваат 10 членови, од кои еден претседател и 9
+        претставници на смеровите.
+      </p>
+      <div class="flex gap-4">
+        <a
+          href="#"
+          class="inline-flex aspect-square h-12 items-center justify-center rounded-full border-2 text-[rgb(17,1,78)]"
+        >
+          <EmailIcon />
+        </a>
+
+        <a
+          href="#"
+          class="inline-flex aspect-square h-12 items-center justify-center rounded-full border-2 text-[rgb(17,1,78)]"
+        >
+          <LinkedInIcon />
+        </a>
+
+        <a
+          href="#"
+          class="inline-flex aspect-square h-12 items-center justify-center rounded-full border-2 text-[rgb(17,1,78)]"
+        >
+          <InstagramIcon />
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
