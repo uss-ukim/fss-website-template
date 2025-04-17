@@ -1,17 +1,10 @@
-import { defineCollection, z } from "astro:content";
-
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { organizationSchema } from "tina/collections";
 
 const organizations = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/organizations" }),
-  schema: z.object({
-    name: z.string(),
-    long_name: z.string(),
-    description: z.string(),
-    url: z.string(),
-    logo: z.string(),
-    tags: z.array(z.string()),
-  }),
+  loader: glob({ pattern: "**/*.yaml", base: "./content/organizations" }),
+  schema: organizationSchema,
 });
 
 export const collections = { organizations };
