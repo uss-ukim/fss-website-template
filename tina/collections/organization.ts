@@ -85,6 +85,7 @@ export const OrganizationCollection: Collection = {
       name: "name",
       label: "Short Name",
       required: true,
+      isTitle: true,
     },
     {
       type: "string",
