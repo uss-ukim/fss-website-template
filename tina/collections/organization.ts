@@ -20,14 +20,23 @@ export const organizationSchema = z.object({
     .object({
       image: z.string().optional(),
       text: z.string(),
+      website_url: z.string(),
+      google_maps_name: z.string().optional(),
     })
     .optional(),
 
   contact: z.object({
-    address: z.string().optional(),
     email: z.string().optional(),
     instagram: z.string().optional(),
     facebook: z.string().optional(),
+    linkedin: z.string().optional(),
+    additional: z.array(
+      z.object({
+        type: z.enum(["email", "phone_number", "website"]),
+        value: z.string(),
+        label: z.string().optional(),
+      }),
+    ),
   }),
 
   team: z
@@ -123,7 +132,7 @@ export const OrganizationCollection: Collection = {
     {
       type: "object",
       name: "faculty",
-      label: "Faculty Section",
+      label: "Faculty Information",
       fields: [
         {
           type: "image",
@@ -135,6 +144,24 @@ export const OrganizationCollection: Collection = {
           name: "text",
           label: "Text Content",
         },
+        {
+          type: "string",
+          name: "website_url",
+          label: "Website Link",
+          ui: {
+            validate(value = "") {
+              if (value && !value.endsWith(".ukim.mk")) {
+                return "Website URL must end with .ukim.mk";
+              }
+            },
+          },
+        },
+        {
+          type: "string",
+          name: "google_maps_name",
+          label: "Google Maps Name",
+          description: "Name of the faculty in Google Maps",
+        },
       ],
     },
     {
@@ -142,10 +169,35 @@ export const OrganizationCollection: Collection = {
       name: "contact",
       label: "Contact",
       fields: [
-        { type: "string", name: "address", label: "Address" },
         { type: "string", name: "email", label: "Email" },
         { type: "string", name: "instagram", label: "Instagram" },
         { type: "string", name: "facebook", label: "Facebook" },
+        { type: "string", name: "linkedin", label: "LinkedIn" },
+        {
+          type: "object",
+          name: "additional",
+          label: "Additional Contacts",
+          list: true,
+          ui: {
+            itemProps: (item) => ({
+              label: item?.value ? `${item.value} (${item.label})` : "Contact",
+            }),
+          },
+          fields: [
+            {
+              type: "string",
+              name: "type",
+              label: "Type",
+              options: [
+                { label: "Email", value: "email" },
+                { label: "Phone Number", value: "phone_number" },
+                { label: "Website", value: "website" },
+              ],
+            },
+            { type: "string", name: "value", label: "Value", description: "e.g. +389 12345678" },
+            { type: "string", name: "label", label: "Label" },
+          ],
+        },
       ],
     },
     {
