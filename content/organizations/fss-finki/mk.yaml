@@ -4,9 +4,9 @@ name: ФСС ФИНКИ
 long_name: >
   Факултетско Студентско Собрание при Факултет за Информатички Науки и
   Компјутерско Инженерство
-logo: /images/logos/fss-finki-logo.png
+logo: /media/organizations/fss-finki/logo/fss-finki-logo.png
 about:
-  image: /images/slika_od_fss.png
+  image: /media/organizations/fss-finki/about/slika_od_fss.png
   text: >
     Факултетското студентско собрание на ФИНКИ е официјалното студентско тело
     кое ги застапува студентите на ФИНКИ. Ние сме единица на факултетот оформена
@@ -27,7 +27,7 @@ mission:
     кои ги нема во образовниот процес со организирање на настани, семинари,
     работилници и акции.
 faculty:
-  image: /images/logos/fss-finki-logo.png
+  image: /media/organizations/fss-finki/faculty/logo_fakultet.png
   text: >
     Факултетот за компјутерски науки и инженерство (ФИНКИ) при Универзитетот
     „Св. Кирил и Методиј“ во Скопје е водечка академска институција во областа
@@ -69,7 +69,7 @@ contact:
       value: 070/302-440
       label: студентска служба
 team:
-  - image: /images/logos/fss-finki-logo.png
+  - image: /media/organizations/fss-finki/logo/fss-finki-logo.png
     name: Ангела Василевска
     position: Потпарол
     contact:
@@ -77,7 +77,7 @@ team:
       instagram: 'https://instagram.com/angelavasilevska'
       linkedin: 'https://linkedin.com/angelavasilevska'
 ombudsman:
-  image: /images/logos/fss-finki-logo.png
+  image: /media/organizations/fss-finki/logo/fss-finki-logo.png
   name: Петар Стојковски
   description: >
     Заради заштита на правата на студентите на секој универзитет се избира
