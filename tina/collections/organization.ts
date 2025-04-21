@@ -3,6 +3,7 @@ import type { Collection } from "tinacms";
 
 export const organizationSchema = z.object({
   slug: z.string(),
+  lang: z.string(),
   name: z.string(),
   long_name: z.string(),
   logo: z.string(),
@@ -82,10 +83,16 @@ export const OrganizationCollection: Collection = {
     },
     {
       type: "string",
+      name: "lang",
+      label: "Language Code",
+      description: "Example: mk, en",
+      required: true,
+    },
+    {
+      type: "string",
       name: "name",
       label: "Short Name",
       required: true,
-      isTitle: true,
     },
     {
       type: "string",

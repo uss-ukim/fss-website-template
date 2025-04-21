@@ -1,0 +1,87 @@
+slug: fss-finki
+lang: en
+name: FSS FINKI
+long_name: |
+  Faculty Student Assembly at the Faculty of Computer Science and Engineering
+logo: /images/logos/fss-finki-logo.png
+about:
+  image: /images/slika_od_fss.png
+  text: >
+    The Faculty Student Assembly at FINKI is the official student body
+    representing the students of FINKI. We are a faculty unit formed in
+    accordance with the law on higher education, where students from both the
+    first and second cycle of studies have the right to participate. The members
+    are elected through public, direct, and secret elections held every year.
+    The Faculty Student Assembly is composed of 10 members, including one
+    president and nine program representatives.
+mission:
+  mission: >
+    We fight to prove that faculties belong to the students and that students
+    should have the main voice in them. This means we strive to improve the
+    student standard, which is currently at a very low level, to unite the
+    students and present a collective front before professors and the dean's
+    office for all the problems we face and the changes we want to see. Besides
+    providing better conditions for studying at the faculty, we offer students
+    opportunities to expand their knowledge and learn additional skills not
+    covered in the curriculum by organizing events, seminars, workshops, and
+    initiatives.
+faculty:
+  image: /images/logos/fss-finki-logo.png
+  text: >
+    The Faculty of Computer Science and Engineering (FINKI) at the "Ss. Cyril
+    and Methodius" University in Skopje is a leading academic institution in the
+    field of informatics and engineering in Macedonia. Founded in 2011, FINKI
+    enrolls over 1000 undergraduate students annually, offering modern programs
+    and practical education that prepare students for successful careers in the
+    IT industry.
+
+
+    Although it still lacks a fully dedicated building, FINKI has its own
+    amphitheater and uses facilities from other faculties on the technical
+    campus, such as the Faculty of Mechanical Engineering, the Faculty of
+    Technology and Metallurgy, and the Pedagogical Academy. The faculty staff
+    includes renowned professors, associate professors, and assistants who
+    actively participate in scientific research and projects.
+
+
+    The faculty has established collaborations with local and international
+    companies and institutions such as Microsoft, IBM, Huawei, and others. FINKI
+    is known for its achievements and participation in various international
+    competitions and scientific conferences. With a strong focus on research,
+    innovation, and industry cooperation, the faculty provides a dynamic and
+    inspiring environment for academic and personal development.
+  website_url: 'https://finki.ukim.mk'
+  google_maps_name: FCSE Skopje
+contact:
+  email: fss@finki.ukim.mk
+  instagram: 'https://www.instagram.com/fssfinki/'
+  facebook: 'https://www.facebook.com/FSSFinki'
+  linkedin: 'https://www.linkedin.com/company/student-assembly-of-fcse'
+  additional:
+    - type: email
+      value: contact@finki.ukim.mk
+      label: FINKI
+    - type: email
+      value: studentski@finki.ukim.mk
+      label: Student Services
+    - type: phone_number
+      value: 070/302-440
+      label: Student Services
+team:
+  - image: /images/logos/fss-finki-logo.png
+    name: Angela Vasilevska
+    position: Spokesperson
+    contact:
+      email: angela@fssfinki.mk
+      instagram: 'https://instagram.com/angelavasilevska'
+      linkedin: 'https://linkedin.com/angelavasilevska'
+ombudsman:
+  image: /images/logos/fss-finki-logo.png
+  name: Petar Stojkovski
+  description: >
+    To protect student rights at every university, a student ombudsman is
+    elected from among the regular students of the university.
+  contact:
+    email: pravobranitel-fss@finki.ukim.mk
+    instagram: 'https://instagram.com/pravobranitel-fss'
+    linkedin: 'https://linkedin.com/pravobranitel-fss'
