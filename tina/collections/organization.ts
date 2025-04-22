@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Collection } from "tinacms";
+import merge from "lodash/merge";
 
 export const organizationSchema = z.object({
   slug: z.string(),
@@ -9,7 +10,7 @@ export const organizationSchema = z.object({
   logo: z.string(),
 
   about: z.object({
-    image: z.string().optional(),
+    image: z.string(),
     text: z.string(),
   }),
 
@@ -17,18 +18,16 @@ export const organizationSchema = z.object({
     mission: z.string(),
   }),
 
-  faculty: z
-    .object({
-      image: z.string().optional(),
-      text: z.string(),
-      website_url: z.string(),
-      google_maps_name: z.string().optional(),
-    })
-    .optional(),
+  faculty: z.object({
+    image: z.string(),
+    text: z.string(),
+    website_url: z.string(),
+    google_maps_name: z.string(),
+  }),
 
   contact: z.object({
-    email: z.string().optional(),
-    instagram: z.string().optional(),
+    email: z.string(),
+    instagram: z.string(),
     facebook: z.string().optional(),
     linkedin: z.string().optional(),
     additional: z.array(
@@ -40,40 +39,87 @@ export const organizationSchema = z.object({
     ),
   }),
 
-  team: z
-    .array(
-      z.object({
-        image: z.string().optional(),
-        name: z.string(),
-        position: z.string(),
-        contact: z.object({
+  team: z.array(
+    z.object({
+      image: z.string().optional(),
+      name: z.string(),
+      position: z.string(),
+      contact: z
+        .object({
           email: z.string().optional(),
           instagram: z.string().optional(),
           linkedin: z.string().optional(),
-        }),
-      }),
-    )
-    .optional(),
+        })
+        .optional(),
+    }),
+  ),
 
-  ombudsman: z
-    .object({
-      image: z.string().optional(),
-      name: z.string(),
-      description: z.string(),
-      contact: z.object({
+  ombudsman: z.object({
+    image: z.string().optional(),
+    name: z.string(),
+    description: z.string(),
+    contact: z
+      .object({
         email: z.string().optional(),
         instagram: z.string().optional(),
         linkedin: z.string().optional(),
-      }),
-    })
-    .optional(),
+      })
+      .optional(),
+  }),
 });
+
+const emptyOrganization: z.infer<typeof organizationSchema> = {
+  slug: "",
+  lang: "",
+  name: "",
+  long_name: "",
+  logo: "",
+
+  about: {
+    image: "",
+    text: {} as any,
+  },
+
+  mission: {
+    mission: {} as any,
+  },
+
+  faculty: {
+    image: "",
+    text: {} as any,
+    website_url: "",
+    google_maps_name: "",
+  },
+
+  contact: {
+    email: "",
+    instagram: "",
+    facebook: "",
+    linkedin: "",
+    additional: [],
+  },
+
+  team: [],
+
+  ombudsman: {
+    image: "",
+    name: "",
+    description: {} as any,
+    contact: {},
+  },
+};
 
 export const OrganizationCollection: Collection = {
   label: "Organizations",
   name: "organization",
   path: "content/organizations",
   format: "yaml",
+  ui: {
+    beforeSubmit: async ({ values }) => {
+      // Make sure the structure satisfies the schema
+      return merge(emptyOrganization, values);
+    },
+  },
   fields: [
     {
       type: "string",
@@ -87,6 +133,7 @@ export const OrganizationCollection: Collection = {
       label: "Language Code",
       description: "Example: mk, en",
       required: true,
+      isTitle: true,
     },
     {
       type: "string",
@@ -116,11 +163,13 @@ export const OrganizationCollection: Collection = {
           type: "image",
           name: "image",
           label: "Organization Image",
+          required: true,
         },
         {
           type: "rich-text",
           name: "text",
           label: "Text Content",
+          required: true,
         },
       ],
     },
@@ -134,6 +183,7 @@ export const OrganizationCollection: Collection = {
           type: "rich-text",
           name: "mission",
           label: "Text Content",
+          required: true,
         },
       ],
     },
@@ -146,16 +196,19 @@ export const OrganizationCollection: Collection = {
           type: "image",
           name: "image",
           label: "Faculty Image",
+          required: true,
         },
         {
           type: "rich-text",
           name: "text",
           label: "Text Content",
+          required: true,
         },
         {
           type: "string",
           name: "website_url",
           label: "Website Link",
+          required: true,
           ui: {
             validate(value = "") {
               if (value && !value.endsWith(".ukim.mk")) {
@@ -169,6 +222,7 @@ export const OrganizationCollection: Collection = {
           name: "google_maps_name",
           label: "Google Maps Name",
           description: "Name of the faculty in Google Maps",
+          required: true,
         },
       ],
     },
@@ -177,8 +231,8 @@ export const OrganizationCollection: Collection = {
       name: "contact",
       label: "Contact",
       fields: [
-        { type: "string", name: "email", label: "Email" },
-        { type: "string", name: "instagram", label: "Instagram" },
+        { type: "string", name: "email", label: "Email", required: true },
+        { type: "string", name: "instagram", label: "Instagram", required: true },
         { type: "string", name: "facebook", label: "Facebook" },
         { type: "string", name: "linkedin", label: "LinkedIn" },
         {
