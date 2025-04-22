@@ -10,3 +10,17 @@ export async function getOrganizationContent(slug: string, lang = "mk") {
 
   return entry.data;
 }
+
+export async function getOrganizationLanguages(slug: string) {
+  const organizations = await getCollection("organizations");
+
+  const languageSet = new Set<string>();
+
+  for (const org of organizations) {
+    if (org.data.slug === slug) {
+      languageSet.add(org.data.lang);
+    }
+  }
+
+  return Array.from(languageSet);
+}
