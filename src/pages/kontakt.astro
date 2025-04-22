@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PhoneIcon from "../components/icons/PhoneIcon.astro";
-import EmailIcon from "../components/icons/EmailIcon.astro";
+import { Icon } from "astro-icon/components";
 
 const mapSearchTerm = "FCSE Skopje";
 ---
@@ -25,23 +24,25 @@ const mapSearchTerm = "FCSE Skopje";
       <h1 class="text-3xl font-semibold text-white sm:text-4xl">КОНТАКТ</h1>
       <div class="flex flex-col gap-4">
         <div class="flex gap-4 text-white sm:text-xl">
-          <EmailIcon /><span>
+          <Icon name="mdi:email-outline" class="text-2xl" />
+          <span>
             <a href="mailto:ffs@finki.ukim.mk"> ffs@finki.ukim.mk </a> (ФСС ФИНКИ)
           </span>
         </div>
         <div class="flex gap-4 text-white sm:text-xl">
-          <EmailIcon />
+          <Icon name="mdi:email-outline" class="text-2xl" />
           <span>
             <a href="mailto:contact@finki.ukim.mk">contact@finki.ukim.mk</a> (ФИНКИ)
           </span>
         </div>
         <div class="flex gap-4 text-white sm:text-xl">
-          <EmailIcon /><span>
+          <Icon name="mdi:email-outline" class="text-2xl" />
+          <span>
             <a href="mailto:studentski@finki.ukim.mk">studentski@finki.ukim.mk</a> (студентска служба)
           </span>
         </div>
         <div class="flex gap-4 text-white sm:text-xl">
-          <PhoneIcon />
+          <Icon name="mdi:phone" class="text-2xl" />
           <span>
             <a href="#">Моб: 070/302-440 </a> (студентска служба)
           </span>

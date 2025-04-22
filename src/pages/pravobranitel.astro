@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import InstagramIcon from "../components/icons/InstagramIcon.astro";
-import EmailIcon from "../components/icons/EmailIcon.astro";
-import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout>
@@ -28,21 +26,21 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
           href="#"
           class="inline-flex aspect-square h-12 items-center justify-center rounded-full border-2 text-[rgb(17,1,78)]"
         >
-          <EmailIcon />
+          <Icon name="mdi:email-outline" class="text-2xl" />
         </a>
 
         <a
           href="#"
           class="inline-flex aspect-square h-12 items-center justify-center rounded-full border-2 text-[rgb(17,1,78)]"
         >
-          <LinkedInIcon />
+          <Icon name="mdi:linkedin" class="text-2xl" />
         </a>
 
         <a
           href="#"
           class="inline-flex aspect-square h-12 items-center justify-center rounded-full border-2 text-[rgb(17,1,78)]"
         >
-          <InstagramIcon />
+          <Icon name="mdi:instagram" class="text-2xl" />
         </a>
       </div>
     </div>
