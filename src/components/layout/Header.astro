@@ -1,32 +1,139 @@
-<header class="container flex w-full items-center justify-between bg-white px-8 py-4 shadow">
-  <div class="flex items-center gap-2">
-    <a href="/">
-      <img
-        src="/media/organizations/fss-finki/logo/fss-finki-logo.png"
-        alt="FSS Logo"
-        class="aspect-square h-16"
-      />
-    </a>
+---
+import { Icon } from "astro-icon/components";
 
-    <p class="lg:text-md w-64 text-sm">
-      Факултетско Студентско Собрание при Факултет за Информатички Науки и Компјутерско Инженерство
-    </p>
+const navLinks: { href: string; label: string }[] = [
+  { href: "/", label: "Почетна" },
+  { href: "/tim", label: "Тимот" },
+  { href: "/pravobranitel", label: "Правобранител" },
+  { href: "/kontakt", label: "Контакт" },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => currentPath === href;
+---
+
+<header class="relative container">
+  <div
+    class="relative z-30 flex w-full items-center justify-between gap-4 bg-white p-4 shadow md:px-8 md:py-4"
+  >
+    <div class="flex items-center gap-2">
+      <a href="/" class="shrink-0">
+        <img
+          src="/media/organizations/fss-finki/logo/fss-finki-logo.png"
+          alt="FSS Logo"
+          class="aspect-square h-16"
+        />
+      </a>
+      <p class="lg:text-md w-64 text-xs">
+        Факултетско Студентско Собрание при Факултет за Информатички Науки и Компјутерско
+        Инженерство
+      </p>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:block">
+      <ul class="flex gap-4 lg:gap-16">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class:list={{
+                  uppercase: true,
+                  "text-blue-600": isActive(link.href),
+                }}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Mobile menu toggle -->
+    <button
+      id="mobile-menu-toggle"
+      class="relative z-30 text-gray-800 focus:outline-none md:hidden"
+      aria-label="Open menu"
+    >
+      <Icon id="mobile-menu-toggle-closed" name="mdi:menu" class="h-8 w-8" />
+      <Icon id="mobile-menu-toggle-open" name="mdi:close" class="hidden h-8 w-8" />
+    </button>
   </div>
 
-  <nav>
-    <ul class="flex gap-4 lg:gap-16">
-      <li>
-        <a href="/" class="uppercase">Почетна</a>
-      </li>
-      <li>
-        <a href="/tim" class="uppercase">Тимот</a>
-      </li>
-      <li>
-        <a href="/pravobranitel" class="uppercase">Правобранител</a>
-      </li>
-      <li>
-        <a href="/kontakt" class="uppercase">Контакт</a>
-      </li>
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="absolute top-full left-0 z-10 w-full -translate-y-full transform bg-white shadow-md transition-transform duration-300 ease-in-out md:hidden"
+  >
+    <ul class="flex flex-col items-center gap-3 py-6">
+      {
+        navLinks.map((link) => (
+          <li class="w-full">
+            <a
+              href={link.href}
+              class:list={{
+                "block px-6 py-2 text-left md:uppercase": true,
+                "bg-blue-600/70 font-bold text-white": isActive(link.href),
+              }}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
-  </nav>
+  </div>
+
+  <!-- Background overlay -->
+  <div
+    id="mobile-menu-overlay"
+    class="pointer-events-none fixed top-0 left-0 h-full w-full bg-black opacity-0 transition-opacity duration-300 ease-in-out md:hidden"
+  >
+  </div>
 </header>
+
+<script is:inline>
+  const menu = document.getElementById("mobile-menu");
+  const toggleBtn = document.getElementById("mobile-menu-toggle");
+  const toggleBtnClosed = document.getElementById("mobile-menu-toggle-closed");
+  const toggleBtnOpen = document.getElementById("mobile-menu-toggle-open");
+  const overlay = document.getElementById("mobile-menu-overlay");
+  let isOpen = false;
+
+  function updateMenuState() {
+    // Toggle the button's icon
+    toggleBtnClosed.classList.toggle("hidden", isOpen);
+    toggleBtnOpen.classList.toggle("hidden", !isOpen);
+
+    // Toggle the menu
+    menu.classList.toggle("translate-y-0", isOpen);
+    menu.classList.toggle("-translate-y-full", !isOpen);
+
+    // Toggle the overlay
+    overlay.classList.toggle("opacity-50", isOpen);
+    overlay.classList.toggle("opacity-0", !isOpen);
+    overlay.classList.toggle("pointer-events-auto", isOpen);
+    overlay.classList.toggle("pointer-events-none", !isOpen);
+
+    // Disable scrolling when the menu is open
+    document.body.classList.toggle("overflow-hidden", isOpen);
+
+    // Scroll to top
+    if (isOpen) window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    isOpen = !isOpen;
+    updateMenuState();
+  });
+
+  // Close the menu if the overlay is clicked
+  overlay.addEventListener("click", () => {
+    if (isOpen) {
+      isOpen = false;
+      updateMenuState();
+    }
+  });
+</script>
