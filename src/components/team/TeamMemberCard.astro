@@ -1,0 +1,43 @@
+---
+import { Icon } from "astro-icon/components";
+import { Organization } from "../../../tina/collections";
+
+interface Props {
+  member: Organization["team"][number];
+}
+
+const { member } = Astro.props;
+---
+
+<div class="flex items-center gap-2 p-8 shadow-lg md:flex-col">
+  <img src={member.image} alt={member} class="aspect-square w-24 flex-0 md:w-48" />
+  <div class="flex-grow">
+    <div class="mb-2 md:mb-4">
+      <p class="text-center text-lg font-semibold">{member.name}</p>
+      <p class="test-base text-center">{member.position}</p>
+    </div>
+
+    <div class="flex justify-center gap-2">
+      <a
+        href="#"
+        class="inline-flex aspect-square h-10 items-center justify-center rounded-full border text-blue-500/90"
+      >
+        <Icon name="mdi:email-outline" class="text-2xl" />
+      </a>
+
+      <a
+        href="#"
+        class="inline-flex aspect-square h-10 items-center justify-center rounded-full border text-blue-500/90"
+      >
+        <Icon name="mdi:linkedin" class="text-2xl" />
+      </a>
+
+      <a
+        href="#"
+        class="inline-flex aspect-square h-10 items-center justify-center rounded-full border text-blue-500/90"
+      >
+        <Icon name="mdi:instagram" class="text-2xl" />
+      </a>
+    </div>
+  </div>
+</div>

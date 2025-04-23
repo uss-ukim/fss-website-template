@@ -68,7 +68,9 @@ export const organizationSchema = z.object({
   }),
 });
 
-const emptyOrganization: z.infer<typeof organizationSchema> = {
+export type Organization = z.infer<typeof organizationSchema>;
+
+const emptyOrganization: Organization = {
   slug: "",
   lang: "",
   name: "",
