@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+const members = new Array(10).fill(1).map((x) => ({
+  imageUrl: "media/organizations/fss-finki/logo/fss-finki-logo.png",
+  name: "Team Member",
+  position: "President",
+  contact: {
+    email: "d@t.s",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+  },
+}));
+---
+
+<Layout>
+  <div class="p-4">
+    <h1 class="m-8 text-center text-4xl">Членови на тимот</h1>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {
+        members.map((member) => (
+          <div class="flex items-center gap-2 p-8 shadow-lg md:flex-col">
+            <img
+              src={member.imageUrl}
+              alt={member.name}
+              class="aspect-square w-24 flex-0 md:w-48"
+            />
+            <div class="flex-grow">
+              <div class="mb-2 md:mb-4">
+                <p class="text-center text-lg font-semibold">{member.name}</p>
+                <p class="test-base text-center">{member.position}</p>
+              </div>
+
+              <div class="flex justify-center gap-2">
+                <a
+                  href="#"
+                  class="inline-flex aspect-square h-10 items-center justify-center rounded-full border text-blue-500/90"
+                >
+                  <Icon name="mdi:email-outline" class="text-2xl" />
+                </a>
+
+                <a
+                  href="#"
+                  class="inline-flex aspect-square h-10 items-center justify-center rounded-full border text-blue-500/90"
+                >
+                  <Icon name="mdi:linkedin" class="text-2xl" />
+                </a>
+
+                <a
+                  href="#"
+                  class="inline-flex aspect-square h-10 items-center justify-center rounded-full border text-blue-500/90"
+                >
+                  <Icon name="mdi:instagram" class="text-2xl" />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
